@@ -6,6 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: sourceData,
+
+    
     actions: {
         createPost(context, post) {
             const postId = 'greatPost' + Math.random()
@@ -15,6 +17,8 @@ export default new Vuex.Store({
             context.commit('appendPostToUser', { userId: post.userId, postId })
         }
     },
+
+
     mutations: {
         setPost(state, { post, postId }) {
             Vue.set(state.posts, postId, post)
