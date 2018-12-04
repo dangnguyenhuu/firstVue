@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+/* .header {
+    overflow: hidden;
+    position: fixed;
+    top: 0; 
+    width: 100%; 
+} */
+
 body {
     background-color: #F6F8FF;
     min-height: 100vh;
