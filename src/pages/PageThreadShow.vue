@@ -12,7 +12,6 @@
 </template>
 
 <script>
-
 import PostList from '@/components/PostList'
 import PostEditor from '@/components/PostEditor'
 
@@ -34,6 +33,9 @@ export default {
         }
     },
     computed: {
+        thread() {
+            return this.$store.state.threads[this.id]
+        },
         posts() {
             const postIds = Object.values(this.thread.posts)
             return Object.values(this.$store.state.posts)
