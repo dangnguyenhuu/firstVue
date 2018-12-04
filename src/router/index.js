@@ -14,6 +14,7 @@ export default new Router({
   routes: [
     { path: '/',               name: 'Home',            component: Home },
     { path: '/me',             name: 'Profile',         component: Profile,       props: true},
+    { path: '/me/edit',        name: 'ProfileEdit',     component: Profile,       props: {edit: true}},
     { path: '/category/:id',   name: 'Category',        component: Category,      props: true},
     { path: '/forum/:id',      name: 'Forum',           component: Forum,         props: true},
     { path: '/thread/:id',     name: 'ThreadShow',      component: ThreadShow,    props: true },
