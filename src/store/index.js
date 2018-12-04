@@ -21,17 +21,20 @@ export default new Vuex.Store({
 			const postId = "greatPost" + Math.random();
 			post[".key"] = postId;
 			context.commit("setPost", { post, postId });
-			context.commit("appendPostToThread", {
-				threadId: post.threadId,
-				postId
-			});
+			context.commit("appendPostToThread", { threadId: post.threadId, postId });
 			context.commit("appendPostToUser", { userId: post.userId, postId });
+		},
+		updateUser ({commit}, user) {
+			commit('setUser', {userId: user['.key'], user})
 		}
 	},
 
 	mutations: {
 		setPost(state, { post, postId }) {
 			Vue.set(state.posts, postId, post);
+		},
+		setUser (state, {user, userId}) {
+			Vue.set(state.users, userId, user)
 		},
 		appendPostToThread(state, { postId, threadId }) {
 			const thread = state.threads[threadId];
