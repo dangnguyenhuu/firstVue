@@ -11,7 +11,7 @@
         ></textarea>
     </div>
     <div class="form-actions">
-        <button class="btn-blue">Submit post</button>
+        <button class="btn-blue">Comment</button>
     </div>
 </form>
 </template>

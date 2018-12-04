@@ -1,7 +1,7 @@
 <template>
 <header class="header" id="header">
     <router-link :to="{name: 'Home'}" class="logo">
-        <img src="../assets/img/vueschool-logo.svg">
+        <img src="../assets/img/logo.png">
     </router-link>
         <div class="btn-hamburger">
             <!-- use .btn-humburger-active to open the menu -->
