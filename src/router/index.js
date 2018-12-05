@@ -4,6 +4,7 @@ import Home from '@/pages/PageHome'
 import Profile from '@/pages/PageProfile'
 import Category from '@/pages/PageCategory'
 import ThreadShow from '@/pages/PageThreadShow'
+import ThreadEdit from '@/pages/PageThreadEdit'
 import ThreadCreate from '@/pages/PageThreadCreate'
 import NotFound from '@/pages/PageNotFound'
 import Forum from '@/pages/PageForum'
@@ -20,6 +21,7 @@ export default new Router({
     { path: '/forum/:id',                   name: 'Forum',           component: Forum,         props: true },
     { path: '/thread/create/:forumId',      name: 'ThreadCreate',    component: ThreadCreate,  props: true },
     { path: '/thread/:id',                  name: 'ThreadShow',      component: ThreadShow,    props: true },
+    { path: '/thread/:id/edit',              name: 'ThreadEdit',      component: ThreadEdit,    props: true },
     { path: '*',                            name: 'NotFound',        component: NotFound }
   ],
   mode: 'history'
