@@ -26,12 +26,7 @@ export default {
             type: String
         }
     },
-    data() {
-        return {
-            thread: this.$store.state.threads[this.id],
-            newPostText: ''
-        }
-    },
+
     computed: {
         thread() {
             return this.$store.state.threads[this.id]
