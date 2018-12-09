@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import firebase from 'firebase'
 import { countObjectProperties } from '@/utils'
 
 Vue.use(Vuex)
@@ -31,7 +32,7 @@ export default new Vuex.Store({
 		},
 		userThreadsCount: state => id => countObjectProperties(state.users[id].threads),
 		userPostsCount: state => id => countObjectProperties(state.users[id].posts),
-		threadRepliesCount: state => id => countObjectProperties(state.threads[id].posts) - 1	
+		threadRepliesCount: state => id => countObjectProperties(state.threads[id].posts) - 1
 	},
 
 	actions: {
@@ -42,8 +43,8 @@ export default new Vuex.Store({
 			post.publishedAt = Math.floor(Date.now() / 1000)
 
 			commit('setPost', { post, postId })
-			commit('appendPostToThread', {parentId: post.threadId, childId: postId})
-			commit('appendPostToUser', {parentId: post.userId, childId: postId})	  
+			commit('appendPostToThread', { parentId: post.threadId, childId: postId })
+			commit('appendPostToUser', { parentId: post.userId, childId: postId })
 			return Promise.resolve(state.posts[postId])
 		},
 
@@ -56,8 +57,8 @@ export default new Vuex.Store({
 				const thread = { '.key': threadId, title, forumId, publishedAt, userId }
 
 				commit('setThread', { threadId, thread })
-				commit('appendThreadToForum', {parentId: forumId, childId: threadId})
-				commit('appendThreadToUser', {parentId: userId, childId: threadId})
+				commit('appendThreadToForum', { parentId: forumId, childId: threadId })
+				commit('appendThreadToUser', { parentId: userId, childId: threadId })
 
 				dispatch('createPost', { text, threadId })
 					.then(post => {
@@ -99,8 +100,39 @@ export default new Vuex.Store({
 		},
 		updateUser({ commit }, user) {
 			commit('setUser', { userId: user['.key'], user })
+		},
+		fetchThread({ state, commit }, { id }) {
+			console.log('🔥 📄', id)
+			return new Promise((resolve, reject) => {
+				firebase.database().ref('threads').child(id).once('value', snapshot => {
+					const thread = snapshot.val()
+					commit('setThread', { threadId: snapshot.key, thread: { ...thread, '.key': snapshot.key } })
+					resolve(state.threads[id])
+				})
+			})
+		},
+		fetchUser({ state, commit }, { id }) {
+			console.log('🔥 🙋‍', id)
+			return new Promise((resolve, reject) => {
+				firebase.database().ref('users').child(id).once('value', snapshot => {
+					const user = snapshot.val()
+					commit('setUser', { userId: snapshot.key, user: { ...user, '.key': snapshot.key } })
+					resolve(state.users[id])
+				})
+			})
+		},
+		fetchPost({ state, commit }, { id }) {
+			console.log('🔥 💬‍', id)
+			return new Promise((resolve, reject) => {
+				firebase.database().ref('posts').child(id).once('value', snapshot => {
+					const post = snapshot.val()
+					commit('setPost', { postId: snapshot.key, post: { ...post, '.key': snapshot.key } })
+					resolve(state.posts[id])
+				})
+			})
 		}
 	},
+
 
 	mutations: {
 		setPost(state, { post, postId }) {
