@@ -21,7 +21,7 @@ export default new Router({
     { path: '/forum/:id',                   name: 'Forum',           component: Forum,         props: true },
     { path: '/thread/create/:forumId',      name: 'ThreadCreate',    component: ThreadCreate,  props: true },
     { path: '/thread/:id',                  name: 'ThreadShow',      component: ThreadShow,    props: true },
-    { path: '/thread/:id/edit',              name: 'ThreadEdit',      component: ThreadEdit,    props: true },
+    { path: '/thread/:id/edit',             name: 'ThreadEdit',      component: ThreadEdit,    props: true },
     { path: '*',                            name: 'NotFound',        component: NotFound }
   ],
   mode: 'history'
