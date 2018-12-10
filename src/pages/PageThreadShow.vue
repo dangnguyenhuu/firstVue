@@ -19,20 +19,25 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 import PostList from "@/components/PostList";
 import PostEditor from "@/components/PostEditor";
 import {countObjectProperties} from "@/utils";
+
+
 export default {
     components: {
         PostList,
         PostEditor
     },
+
     props: {
         id: {
             required: true,
             type: String
         }
     },
+
     computed: {
         thread() {
             return this.$store.state.threads[this.id];
@@ -53,17 +58,23 @@ export default {
             );
         }
     },
+
+    methods: {
+        ...mapActions(['fetchThread', 'fetchUser', 'fetchPosts'])
+    },
+
+
     created() {
     // fetch thread
-        this.$store.dispatch('fetchThread', {id: this.id})
+        this.fetchThread({id: this.id})
         .then(thread => {
             // fetch user
-            this.$store.dispatch('fetchUser', {id: thread.userId})
-            this.$store.dispatch('fetchPosts', {ids: Object.keys(thread.posts)})
+            this.fetchUser({id: thread.userId})
+            this.fetchPosts({ids: Object.keys(thread.posts)})
                 .then(posts => {
-                posts.forEach(post => {
-                    this.$store.dispatch('fetchUser', {id: post.userId})
-                })
+                    posts.forEach(post => {
+                        this.fetchUser({id: post.userId})
+                    })
             })
         })
     }
