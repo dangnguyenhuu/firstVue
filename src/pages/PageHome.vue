@@ -1,6 +1,6 @@
 <template>
 <div class="col-full push-top">
-    <h1>Welcome to the forum</h1>
+    <h1>Welcome to the DevLog</h1>
     <CategoryList :categories="categories"/>
 </div>
 </template>
