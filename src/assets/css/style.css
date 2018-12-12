@@ -1,11 +1,13 @@
 @charset "UTF-8";
 
-/* .header {
+.header {
     overflow: hidden;
-    position: fixed;
+    position: sticky;
     top: 0; 
     width: 100%; 
-} */
+    z-index: 1000;
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.4);
+} 
 
 body {
     background-color: #F6F8FF;
