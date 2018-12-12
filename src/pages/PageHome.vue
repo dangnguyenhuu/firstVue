@@ -1,7 +1,7 @@
 <template>
 <div class="col-full push-top">
     <h1>Welcome to the DevLog</h1>
-    <a href="https://gulliverconnect.page.link/Hfcj">Deep Link</a>
+    <a href="https://gulliverconnect.page.link/v3RN">Deep Link</a>
     <CategoryList :categories="categories"/>
 </div>
 </template>
