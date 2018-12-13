@@ -38,23 +38,24 @@ export default {
             }
         }
     },
+    
     data() {
         return {
             text: this.post ? this.post.text : ''
         }
     },
+
     computed: {
         isUpdate() {
             return !!this.post
         }
     },
+
     methods: {
         save() {
             this.persist()
                 .then(post => {
-                    this.$emit('save', {
-                        post
-                    })
+                    this.$emit('save', { post })
                 })
         },
         cancel() {

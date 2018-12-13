@@ -107,6 +107,20 @@ export default {
             })
         })
     },
+
+    fetchCurrentPost({ state, commit }) {
+        
+        return new Promise((resolve, reject) => {
+            firebase.database().ref('posts').orderByChild('publishedAt').limitToLast(10).once('value', snapshot => {
+
+                snapshot.forEach(post => {
+                    console.log('🔥', '🏷', post.val())
+                })
+                resolve(Object.values(state.categories))
+            })
+        })
+    },
+
     fetchItem({ state, commit }, { id, emoji, resource }) {
         console.log('🔥‍', emoji, id)
         return new Promise((resolve, reject) => {
