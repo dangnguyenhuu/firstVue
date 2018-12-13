@@ -11,10 +11,7 @@ export default {
         ForumListItem
     },
     props: {
-        forums: {
-            required: true,
-            type: Array
-        }
+        forums: { required: true, type: Array }
     }
 }
 </script>

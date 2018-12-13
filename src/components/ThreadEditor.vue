@@ -19,14 +19,8 @@
 export default {
 
     props: {
-        title: {
-            type: String,
-            default: ''
-        },
-        text: {
-            type: String,
-            default: ''
-        }
+        title: { type: String, default: '' },
+        text: { type: String, default: '' }
     },
 
     data() {

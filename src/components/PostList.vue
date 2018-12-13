@@ -12,10 +12,7 @@ export default {
         PostListItem
     },
     props: {
-        posts: {
-            required: true,
-            type: Array
-        }
+        posts: { required: true, type: Array }
     }
 }
 </script>

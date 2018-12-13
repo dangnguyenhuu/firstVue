@@ -7,10 +7,7 @@
 import moment from 'moment'
 export default {
     props: {
-        timestamp: {
-            required: true,
-            type: Number
-        }
+        timestamp: { required: true, type: Number }
     },
     filters: {
         humanFriendlyDate(date) {

@@ -18,10 +18,7 @@ export default {
         ForumList
     },
     props: {
-        category: {
-            required: true,
-            type: Object
-        }
+        category: { required: true, type: Object }
     },
     computed: {
         categoryForums() {

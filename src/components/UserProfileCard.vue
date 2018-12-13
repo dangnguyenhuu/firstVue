@@ -31,10 +31,7 @@
 <script>
 export default {
     props: {
-        user: {
-            required: true,
-            type: Object
-        }
+        user: { required: true, type: Object }
     },
 
     computed: {

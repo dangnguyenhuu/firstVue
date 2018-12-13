@@ -12,10 +12,7 @@ export default {
         CategoryListItem
     },
     props: {
-        categories: {
-            required: true,
-            type: Array
-        }
+        categories: { required: true, type: Array }
     }
 }
 </script>

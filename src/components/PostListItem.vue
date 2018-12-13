@@ -34,19 +34,19 @@
 import PostEditor from './PostEditor'
 export default {
     props: {
-        post: {
-            required: true,
-            type: Object
-        }
+        post: { required: true, type: Object }
     },
+
     components: {
         PostEditor
     },
+    
     data() {
         return {
             editing: false
         }
     },
+
     computed: {
         user() {
             return this.$store.state.users[this.post.userId]

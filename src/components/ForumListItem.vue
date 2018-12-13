@@ -22,10 +22,7 @@ import {countObjectProperties} from '@/utils'
 
 export default {
     props: {
-        forum: {
-            required: true,
-            type: Object
-        }
+        forum: { required: true, type: Object }
     },
     computed: {
         threadsCount() {

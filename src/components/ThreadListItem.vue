@@ -29,11 +29,9 @@
 <script>
 export default {
     props: {
-        thread: {
-            required: true,
-            type: Object
-        }
+        thread: { required: true, type: Object }
     },
+    
     computed: {
         repliesCount() {
             return this.$store.getters.threadRepliesCount(this.thread['.key'])

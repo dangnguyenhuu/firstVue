@@ -15,7 +15,7 @@ export default {
         ThreadListItem
     },
     props: {
-        threads: {required: true, type: Array}
+        threads: { required: true, type: Array}
     }
 };
 </script>
