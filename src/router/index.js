@@ -9,6 +9,7 @@ import ThreadCreate from '@/pages/PageThreadCreate'
 import NotFound from '@/pages/PageNotFound'
 import Forum from '@/pages/PageForum'
 import Top from '@/pages/PageTop'
+import Register from '@/pages/PageRegister'
 
 
 Vue.use(Router)
@@ -16,7 +17,8 @@ Vue.use(Router)
 export default new Router({
   routes: [
     { path: '/',                            name: 'Home',            component: Home },
-    { path: '/top',                         name: 'Top',            component: Top },
+    { path: '/top',                         name: 'Top',             component: Top },
+    { path: '/register',                    name: 'Register',        component: Register },
     { path: '/me',                          name: 'Profile',         component: Profile,       props: true },
     { path: '/me/edit',                     name: 'ProfileEdit',     component: Profile,       props: {edit: true} },
     { path: '/category/:id',                name: 'Category',        component: Category,      props: true },
