@@ -10,7 +10,7 @@ import NotFound from '@/pages/PageNotFound'
 import Forum from '@/pages/PageForum'
 import Top from '@/pages/PageTop'
 import Register from '@/pages/PageRegister'
-
+import SignIn from '@/pages/PageSignIn'
 
 Vue.use(Router)
 
@@ -19,6 +19,7 @@ export default new Router({
     { path: '/',                            name: 'Home',            component: Home },
     { path: '/top',                         name: 'Top',             component: Top },
     { path: '/register',                    name: 'Register',        component: Register },
+    { path: '/signin',                      name: 'SignIn',          component: SignIn },
     { path: '/me',                          name: 'Profile',         component: Profile,       props: true },
     { path: '/me/edit',                     name: 'ProfileEdit',     component: Profile,       props: {edit: true} },
     { path: '/category/:id',                name: 'Category',        component: Category,      props: true },
