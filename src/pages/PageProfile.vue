@@ -1,6 +1,6 @@
 <template>
-  <div class="flex-grid">
-    <UserProfileCard
+<div class="flex-grid">
+    <!-- <UserProfileCard
       v-if="!edit"
       :user="user"
     />
@@ -15,11 +15,10 @@
       </div>
       <hr>
       <PostList :posts="userPosts"/>
-    </div>
-  </div>
+    </div> -->
+</div>
 </template>
 
- 
 <script>
 import UserProfileCard from "@/components/UserProfileCard";
 import UserProfileCardEditor from "@/components/UserProfileCardEditor";
@@ -27,35 +26,39 @@ import PostList from "@/components/PostList";
 import { mapGetters } from "vuex";
 
 export default {
-  components: {
-    PostList,
-    UserProfileCard,
-    UserProfileCardEditor
-  },
+    components: {
+        PostList,
+        UserProfileCard,
+        UserProfileCardEditor
+    },
 
-  props: {
-    edit: {
-      type: Boolean,
-      default: false
+    props: {
+        edit: {
+            type: Boolean,
+            default: false
+        }
+    },
+
+    computed: {
+        ...mapGetters({
+            user: "authUser"
+        }),
+
+        userPosts() {
+            if (this.user.posts) {
+                return Object.values(this.$store.state.posts).filter(
+                    post => post.userId === this.user[".key"]
+                );
+            }
+            return [];
+        }
+    },
+
+    created () {
+        this.$emit('ready')
     }
-  },
-
-  computed: {
-    ...mapGetters({
-      user: "authUser"
-    }),
-
-    userPosts() {
-      if (this.user.posts) {
-        return Object.values(this.$store.state.posts).filter(
-          post => post.userId === this.user[".key"]
-        );
-      }
-      return [];
-    }
-  }
 };
 </script>
- 
+
 <style scoped>
 </style>

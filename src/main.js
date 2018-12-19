@@ -20,11 +20,7 @@ const config = {
     messagingSenderId: process.env.FIREBASE_MESSAGING_ID
 }
 firebase.initializeApp(config)
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    store.dispatch('fetchAuthUser')
-  }
-})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
