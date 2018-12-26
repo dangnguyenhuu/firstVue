@@ -6,7 +6,7 @@
         <a href="#">
         <img class="avatar-large" :src="user.avatar" alt="">
       </a>
-
+        <p class="desktop-only text-small">{{userThreadsCount}} threads</p>
         <p class="desktop-only text-small">{{userPostsCount}} posts</p>
     </div>
 
@@ -49,11 +49,13 @@ export default {
 
     computed: {
         user() {
-            return this.$store.state.users[this.post.userId]
+            return this.$store.state.users.items[this.post.userId]
         },
         userPostsCount() {
-            return this.$store.getters.userPostsCount(this.post.userId)
-
+            return this.$store.getters['users/userPostsCount'](this.post.userId)
+        },
+        userThreadsCount () {
+            return this.$store.getters['users/userThreadsCount'](this.post.userId)
         }
     }
 }
