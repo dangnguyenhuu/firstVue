@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="navbar-mobile-item"><router-link :to="{name: 'Profile'}">View Profile</router-link></li>
+                <li class="navbar-mobile-item"><a @click.prevent="gotoProfile">View Profile</a></li>
                 <li class="navbar-mobile-item"><a @click.prevent="$store.dispatch('auth/signOut')">Sign Out</a></li>
             </ul>
             <ul v-else>
@@ -76,6 +76,11 @@ export default {
     },
 
     methods: {
+        gotoProfile() {
+            this.closeMobileNavbar()
+            this.closeUserDropdown()
+            this.$router.push({name: 'Profile'})
+        },
         closeUserDropdown () {
             this.userDropdownOpen = false
         },
